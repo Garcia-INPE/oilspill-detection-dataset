@@ -1,0 +1,3 @@
+source,benchmark_id,method,iou_slick,pixel_accuracy
+ml,BASELINE_ML,TinyUNet,0.6049092704184063,0.9956041666666664
+classical,BASELINE_CLASSICAL,felzenszwalb,0.2758997134273058,0.974224253371869

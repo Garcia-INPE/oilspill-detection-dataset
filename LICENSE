@@ -1,0 +1,72 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2024 Instituto Nacional de Pesquisas Espaciais (INPE)
+Applied Research and Technology Division
+São José dos Campos, São Paulo, Brazil
+https://www.inpe.br
+
+---
+
+SCOPE
+
+This license covers everything in this repository: the dataset (CSV/, IMAGES/,
+RASTER/, splits/) and the accompanying benchmark code (pipeline_ml/,
+pipeline_classical/) used to reproduce the baseline results reported for it.
+
+---
+
+ATTRIBUTION
+
+When using, reproducing, or building upon this dataset or code, you must give
+appropriate credit to INPE as specified below:
+
+  Garcia, J.R.M. et al. (2026). Oil Spill Segmentation Dataset.
+  Instituto Nacional de Pesquisas Espaciais (INPE).
+  Available at: https://github.com/[REPOSITORY_URL]
+
+(Replace [REPOSITORY_URL] with the actual repository URL before publication.)
+
+---
+
+LICENSE TERMS
+
+This dataset and code are licensed under the Creative Commons Attribution 4.0
+International License.
+
+You are free to:
+
+  Share  — copy and redistribute the material in any medium or format
+  Adapt  — remix, transform, and build upon the material for any purpose,
+           even commercially
+
+Under the following terms:
+
+  Attribution — You must give appropriate credit, provide a link to the
+                license, and indicate if changes were made. You may do so
+                in any reasonable manner, but not in any way that suggests
+                the licensor endorses you or your use.
+
+  No additional restrictions — You may not apply legal terms or technological
+                               measures that legally restrict others from doing
+                               anything the license permits.
+
+---
+
+NOTICES
+
+The licensor cannot revoke these freedoms as long as you follow the license terms.
+
+This dataset is derived from SAR (Synthetic Aperture Radar) imagery. The
+underlying satellite data may be subject to the terms of the original data
+provider (e.g., ESA Copernicus/Sentinel-1 open access license). Users are
+responsible for verifying compliance with any upstream data source terms.
+
+CC BY 4.0 is a data/content license, not an OSI-approved software license (no
+patent grant, no explicit source-distribution mechanics). It was chosen
+deliberately over a software license (e.g. MIT) to keep one single license
+for the whole repository, and because attribution — central to citing this
+dataset in academic work — is a hard requirement of CC BY but not of more
+permissive software licenses.
+
+For the full legal text of CC BY 4.0, see:
+https://creativecommons.org/licenses/by/4.0/legalcode

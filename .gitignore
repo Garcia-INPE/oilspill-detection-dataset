@@ -1,0 +1,7 @@
+# This tree is a curated, synced artifact (see tools/sync_to_dataset_repo.sh in the
+# dev repo) — it should already be clean. This is just a safety net for anyone
+# working directly inside it (e.g. re-running a benchmark script locally).
+__pycache__/
+*.py[cod]
+.vscode/
+.claude/
