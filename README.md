@@ -22,7 +22,7 @@ benchmark pipelines below.
 - `pipeline_classical/`: Felzenszwalb baseline — unsupervised segmentation scripts
   and registered results (`detection_summary.csv`, `iou_vs_ground_truth.csv`,
   `classical_vs_ml.csv`).
-- `DATASET_CARD.en-us.md`: full dataset reference (schema, inventory, limitations).
+- `DATASET_CARD.md`: full dataset reference (schema, inventory, limitations).
 - `LICENSE`: CC BY 4.0 license.
 - `CITATION.cff`: machine-readable citation metadata.
 
@@ -79,7 +79,7 @@ See `pipeline_classical/README.md` for details.
 
 ## Documentation
 
-- `DATASET_CARD.en-us.md`: complete dataset card (schema, inventory, known limitations).
+- `DATASET_CARD.md`: complete dataset card (schema, inventory, known limitations).
 - `pipeline_ml/00-README.en-us.md`, `pipeline_ml/BENCHMARK_PROTOCOL.en-us.md`: ML workflow and benchmark protocol.
 - `pipeline_classical/README.md`: classical baseline details and why Felzenszwalb was selected.
 

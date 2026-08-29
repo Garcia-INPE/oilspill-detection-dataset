@@ -19,7 +19,7 @@
 oilspill-detection-dataset/
 	README.md
 		- Repository-level quick overview.
-	DATASET_CARD.en-us.md
+	DATASET_CARD.md
 		- This dataset card.
 	LICENSE
 		- CC BY 4.0, covers the dataset and both benchmark pipelines below.
