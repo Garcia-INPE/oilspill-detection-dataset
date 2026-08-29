@@ -17,7 +17,7 @@
 
 ```text
 oilspill-detection-dataset/
-	README.md / README.en-us.md
+	README.md
 		- Repository-level quick overview.
 	DATASET_CARD.en-us.md
 		- This dataset card.
