@@ -1,6 +1,6 @@
 {
   "dataset_root": "../../",
-  "results_dir": "./results",
+  "results_dir": "../results",
   "benchmark_dir": "../benchmark",
   "_comments": {
     "dataset_root": "Required. Path to dataset root (contains splits/ subdirectory).",

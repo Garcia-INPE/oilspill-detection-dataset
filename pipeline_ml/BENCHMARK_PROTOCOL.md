@@ -31,8 +31,8 @@ This protocol standardizes benchmark submissions to keep comparisons fair and re
 - To inspect a registered benchmark tag:
   - `python scripts/visualize_test_evaluation.py --benchmark-id BASELINE_ML --samples-per-page 2`
 - Output artifacts:
-  - `scripts/results/test_reference/test_evaluation.pdf`
-  - `scripts/results/test_reference/test_evaluation_summary.csv`
+  - `results/test_reference/test_evaluation.pdf`
+  - `results/test_reference/test_evaluation_summary.csv`
 - The summary CSV is path-free and stores only `sample_id`, `gt_*` and `pred_*` class fields.
 
 ## Benchmark Table
@@ -40,7 +40,7 @@ This protocol standardizes benchmark submissions to keep comparisons fair and re
 - Register baseline or new run (visual evaluation + CSV registration in one command):
   - `python scripts/register_benchmark.py --benchmark-id BASELINE_ML`
 - The table stores benchmark metadata and metrics only (no artifact paths).
-- Artifact locations are deterministic and derived from `<benchmark_id>` under `scripts/results/*_reference/`.
+- Artifact locations are deterministic and derived from `<benchmark_id>` under `results/*_reference/`.
 - `--benchmark-id` is required; must be explicitly named to keep experiments traceable.
 
 ## Naming Convention
@@ -50,7 +50,7 @@ This protocol standardizes benchmark submissions to keep comparisons fair and re
   - `BASELINE_ML_test_evaluation.pdf`
   - `BASELINE_ML_test_evaluation_summary.csv`
 - Benchmark prediction masks are moved under a tag-named subdirectory (no duplication in root):
-  - `scripts/results/test_reference/predictions/<benchmark_id>/`
+  - `results/test_reference/predictions/<benchmark_id>/`
 - After benchmark registration, test artifacts are kept as tag files only; untagged duplicates are not retained.
 
 ## Scope

@@ -20,8 +20,12 @@ benchmark pipelines below.
 - `splits/`: train/validation/test manifests (108 / 43 / 22 samples).
 - `pipeline_ml/`: TinyUNet baseline — training, evaluation, and benchmark scripts.
 - `pipeline_classical/`: Felzenszwalb baseline — unsupervised segmentation scripts
-  and registered results (`detection_summary.csv`, `iou_vs_ground_truth.csv`,
-  `classical_vs_ml.csv`).
+  and registered results (`detection_summary.csv`, `iou_vs_ground_truth.csv`).
+  Felzenszwalb was chosen as the best of 7 classical methods benchmarked
+  against ground truth, not an arbitrary pick — see `pipeline_classical/README.md`'s
+  "Why Felzenszwalb" section.
+- `pipeline_comparison.csv`: classical vs. ML side by side, same metrics
+  (`iou_slick`, `pixel_accuracy`) — produced by `pipeline_classical/scripts/compare_to_ml.py`.
 - `DATASET_CARD.md`: full dataset reference (schema, inventory, limitations).
 - `LICENSE`: CC BY 4.0 license.
 - `CITATION.cff`: machine-readable citation metadata.
@@ -60,8 +64,8 @@ bash 02-run_pipeline_ml.sh validate
 bash 02-run_pipeline_ml.sh test
 ```
 
-See `pipeline_ml/00-README.en-us.md` for full pipeline documentation and
-`pipeline_ml/BENCHMARK_PROTOCOL.en-us.md` for the benchmark submission format.
+See `pipeline_ml/00-README.md` for full pipeline documentation and
+`pipeline_ml/BENCHMARK_PROTOCOL.md` for the benchmark submission format.
 
 ### Reproducing the classical baseline (Felzenszwalb)
 
@@ -80,7 +84,7 @@ See `pipeline_classical/README.md` for details.
 ## Documentation
 
 - `DATASET_CARD.md`: complete dataset card (schema, inventory, known limitations).
-- `pipeline_ml/00-README.en-us.md`, `pipeline_ml/BENCHMARK_PROTOCOL.en-us.md`: ML workflow and benchmark protocol.
+- `pipeline_ml/00-README.md`, `pipeline_ml/BENCHMARK_PROTOCOL.md`: ML workflow and benchmark protocol.
 - `pipeline_classical/README.md`: classical baseline details and why Felzenszwalb was selected.
 
 ## Citation

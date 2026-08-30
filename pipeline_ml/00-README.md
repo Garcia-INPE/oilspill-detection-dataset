@@ -33,14 +33,14 @@ out-of-the-box for the standard repository layout:
 ```json
 {
   "dataset_root": "../../",
-  "results_dir": "./results",
+  "results_dir": "../results",
   "benchmark_dir": "../benchmark"
 }
 ```
 
 Required keys:
 - `dataset_root`: directory containing `splits/` — defaults to the repository root (`../../` relative to `scripts/`)
-- `results_dir`: output directory for run artifacts — defaults to `scripts/results/`
+- `results_dir`: output directory for run artifacts — defaults to `results/` (i.e. `pipeline_ml/results/`, `../results` relative to `scripts/`)
 - `benchmark_dir`: directory containing `BENCHMARK_TABLE.csv` — defaults to `pipeline_ml/benchmark/`
 
 Relative paths are resolved from the directory that contains `pipeline_ml_config.json`
@@ -59,9 +59,9 @@ bash 02-run_pipeline_ml.sh train
 ```
 
 Artifacts are saved to:
-- `scripts/results/<run-name>/checkpoints/best.pt`
-- `scripts/results/<run-name>/checkpoints/last.pt`
-- `scripts/results/<run-name>/history.json`
+- `results/<run-name>/checkpoints/best.pt`
+- `results/<run-name>/checkpoints/last.pt`
+- `results/<run-name>/history.json`
 
 ## Validation
 ```bash
@@ -69,7 +69,7 @@ bash 02-run_pipeline_ml.sh validate
 ```
 
 Metrics are saved to:
-- `scripts/results/<run-name>/metrics_val.json`
+- `results/<run-name>/metrics_val.json`
 
 ## Testing
 ```bash
@@ -77,9 +77,9 @@ bash 02-run_pipeline_ml.sh test
 ```
 
 Test artifacts are saved to:
-- `scripts/results/<run-name>/metrics_test.json`
-- `scripts/results/<run-name>/test_samples.csv`
-- `scripts/results/<run-name>/predictions/*.png`
+- `results/<run-name>/metrics_test.json`
+- `results/<run-name>/test_samples.csv`
+- `results/<run-name>/predictions/*.png`
 
 ## Visual Evaluation
 Side-by-side PDF (RGB image, ground truth mask, predicted mask) for all test samples:
@@ -95,8 +95,8 @@ python scripts/visualize_test_evaluation.py --benchmark-id BASELINE_ML --samples
 ```
 
 Outputs:
-- `scripts/results/test_reference/test_evaluation.pdf`
-- `scripts/results/test_reference/test_evaluation_summary.csv`
+- `results/test_reference/test_evaluation.pdf`
+- `results/test_reference/test_evaluation_summary.csv`
 
 Notes:
 - Only existing predicted masks are visualized; missing predictions are not generated automatically.
@@ -111,7 +111,7 @@ Notes:
 
 ## Benchmarking
 
-See `BENCHMARK_PROTOCOL.en-us.md` for the full protocol. Quick reference:
+See `BENCHMARK_PROTOCOL.md` for the full protocol. Quick reference:
 
 - Benchmark table: `benchmark/BENCHMARK_TABLE.csv`
 - Register a run (snapshots results + generates visual evaluation):

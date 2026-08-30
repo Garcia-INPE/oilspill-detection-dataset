@@ -23,7 +23,7 @@ def parse_args() -> argparse.Namespace:
         "--benchmark-id",
         type=str,
         default=None,
-        help="Read predictions from scripts/results/<run-name>/predictions/<benchmark-id>/",
+        help="Read predictions from results/<run-name>/predictions/<benchmark-id>/",
     )
     p.add_argument("--samples-per-page", type=int, default=2)
     p.add_argument("--output-pdf", type=Path, default=None)

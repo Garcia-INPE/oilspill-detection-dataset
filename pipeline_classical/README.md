@@ -18,7 +18,7 @@ there is one entry:
 | `BASELINE_CLASSICAL` | `felzenszwalb` |
 
 matching the ML side's single `BASELINE_ML` (method `TinyUNet`) — see
-`results/classical_vs_ml.csv`.
+`../pipeline_comparison.csv`.
 
 ## Why Felzenszwalb
 
@@ -91,8 +91,11 @@ results/
       <tile_id>_features.csv   — feature table (same schema as Oil_Stats_*.csv)
   detection_summary.csv        — per-tile detection counts (benchmark_id, method, n_detected)
   iou_vs_ground_truth.csv      — pixel IoU/precision/recall vs. ground truth (benchmark_id, method)
-  classical_vs_ml.csv          — classical + ML entries side by side (benchmark_id, method, iou_slick, pixel_accuracy)
 ```
+
+`compare_to_ml.py` writes `../pipeline_comparison.csv` at the repo root instead —
+it's a cross-pipeline artifact (classical + ML entries side by side: benchmark_id,
+method, iou_slick, pixel_accuracy), not a classical-only result.
 
 ## Feature schema
 

@@ -11,7 +11,10 @@ matrix across all pixels of all test tiles, positive class = SLICK (mask > 0):
 Run compare_to_ground_truth.py first if results/iou_vs_ground_truth.csv is
 missing or stale.
 
-Usage (from src/pipeline_classical/):
+Writes to ../pipeline_comparison.csv (repo root) rather than results/, since
+this compares across pipelines rather than reporting a classical-only result.
+
+Usage (from pipeline_classical/):
   python scripts/compare_to_ml.py
 """
 from pathlib import Path
@@ -21,7 +24,7 @@ import pandas as pd
 _SCRIPTS_DIR = Path(__file__).resolve().parent
 _CLASSICAL_IOU_CSV = _SCRIPTS_DIR.parent / "results" / "iou_vs_ground_truth.csv"
 _ML_BENCHMARK_CSV = _SCRIPTS_DIR.parent.parent / "pipeline_ml" / "benchmark" / "BENCHMARK_TABLE.csv"
-_OUT_CSV = _SCRIPTS_DIR.parent / "results" / "classical_vs_ml.csv"
+_OUT_CSV = _SCRIPTS_DIR.parent.parent / "pipeline_comparison.csv"
 
 
 def main() -> None:

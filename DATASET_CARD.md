@@ -74,7 +74,11 @@ oilspill-detection-dataset/
 
 	pipeline_classical/
 		- Felzenszwalb baseline: unsupervised segmentation scripts and registered results
-		  (detection_summary.csv, iou_vs_ground_truth.csv, classical_vs_ml.csv).
+		  (detection_summary.csv, iou_vs_ground_truth.csv).
+
+	pipeline_comparison.csv
+		- Classical vs. ML side by side, same metrics (iou_slick, pixel_accuracy) —
+		  produced by pipeline_classical/scripts/compare_to_ml.py.
 ```
 
 ## 3. Split Manifest Schema
@@ -111,7 +115,7 @@ The 8-bit and 16-bit feature tables share the same 67-column schema, including:
 - Splits are grouped by source image: all tiles from the same acquisition are kept in the same split.
 - Both baselines report metrics identically (global/micro confusion matrix over all pixels of all
   tiles, positive class = `mask > 0`), so `iou_slick`/`pixel_accuracy` are directly comparable between
-  `pipeline_classical/results/classical_vs_ml.csv` entries.
+  `pipeline_comparison.csv` entries.
 
 ## 7. Known Limitations
 
