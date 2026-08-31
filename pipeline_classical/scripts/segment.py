@@ -14,7 +14,7 @@ Chosen as the sole classical baseline after comparing all 7 originally
 implemented candidates (CFAR, Otsu, GMM, SLIC+threshold, Felzenszwalb,
 watershed, mean shift) against the ground-truth masks: Felzenszwalb had the
 best IoU (0.276) with the only reasonably balanced precision/recall tradeoff
-(0.42 / 0.44) — see src/pipeline_classical/results/iou_vs_ground_truth.csv.
+(0.42 / 0.44) — see results/iou_vs_ground_truth.csv.
 """
 import numpy as np
 
