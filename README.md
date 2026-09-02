@@ -1,5 +1,7 @@
 # Oil Spill Segmentation Dataset (800x600)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22214145.svg)](https://doi.org/10.5281/zenodo.22214145)
+
 Sentinel-1 SAR-derived oil slick segmentation dataset covering the Gulf of Mexico
 (Cantarell region). 173 image-mask triplets (800 × 600 px) acquired January–September 2020.
 Binary segmentation task: `0 = SEA` (background), `1 = SLICK` (oil spill or seepage).
@@ -89,7 +91,5 @@ See `pipeline_classical/README.md` for details.
 
 ## Citation
 
-> Citation and DOI will be added after publication. If you use this dataset before
-> a formal citation is available, please acknowledge INPE (Instituto Nacional de
-> Pesquisas Espaciais — Applied Research and Technology Division) and link to this
-> repository. See `CITATION.cff` for machine-readable metadata.
+Archived on Zenodo: [10.5281/zenodo.22214145](https://doi.org/10.5281/zenodo.22214145).
+See `CITATION.cff` for machine-readable metadata.

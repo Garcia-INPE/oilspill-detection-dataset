@@ -132,7 +132,5 @@ This dataset is intended for research and benchmarking in remote sensing and oil
 
 ## 9. Citation
 
-> Citation and DOI will be added after publication. If you use this dataset before
-> a formal citation is available, please acknowledge INPE (Instituto Nacional de
-> Pesquisas Espaciais — Applied Research and Technology Division) and link to the
-> repository. See `CITATION.cff` for machine-readable metadata.
+Archived on Zenodo: [10.5281/zenodo.22214145](https://doi.org/10.5281/zenodo.22214145).
+See `CITATION.cff` for machine-readable metadata.
