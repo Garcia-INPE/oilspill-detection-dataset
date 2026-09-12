@@ -1,0 +1,16 @@
+{
+  "_comment": "Paths relative to this config file. dataset_root must contain CSV/Oil_Stats_manual_windows_16bits_800x600.csv. classical_results_dir must contain BASELINE_CLASSICAL/<tile_id>/ with detected-candidate geojson + features (from pipeline_classical/scripts/run_batch.py).",
+  "benchmark_id": "BASELINE_HYBRID",
+  "benchmark_method": "felzenszwalb+rf",
+  "dataset_root": "../",
+  "csv_path": "CSV/Oil_Stats_manual_windows_16bits_800x600.csv",
+  "classical_results_dir": "../pipeline_classical/results",
+  "tiff_dir": "RASTER/IMG-TIFF/16-BIT",
+  "labels_1d_dir": "IMAGES/LABELS-1D",
+  "labels_vector_dir": "RASTER/LABELS-VECTOR/GEOJSON",
+  "splits_dir": "splits",
+  "results_dir": "./results",
+  "random_state": 42,
+  "n_splits": 5,
+  "min_iou_positive": 0.3
+}

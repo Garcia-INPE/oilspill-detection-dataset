@@ -25,12 +25,67 @@ matching the ML side's single `BASELINE_ML` (method `TinyUNet`) — see
 Seven classical methods were originally implemented and compared against
 the ground-truth masks (`IMAGES/LABELS-1D/`): CFAR, Otsu, GMM, SLIC+threshold,
 Felzenszwalb, watershed, and mean shift. Felzenszwalb had the best pixel-level
-IoU (0.276) and the only reasonably balanced precision/recall (0.42 / 0.44) —
-every other method either barely detected anything (CFAR: IoU 0.0, mean
-shift: IoU 0.002) or over-flagged most of the image as slick (watershed:
-recall 0.99 but precision 0.07). The full comparison is saved at
-`results/iou_vs_ground_truth.csv`; rerun `scripts/compare_to_ground_truth.py`
-to reproduce it.
+IoU and the only reasonably balanced precision/recall — every other method
+either barely detected anything (CFAR: IoU 0.0, mean shift: IoU 0.002) or
+over-flagged most of the image as slick (watershed: recall 0.99 but
+precision 0.07). That comparison used Felzenszwalb's original
+`dark_percentile=30` default; current numbers (`dark_percentile=15`, tuned
+below) are IoU 0.292, precision 0.576, recall 0.373. The full comparison is
+saved at `results/iou_vs_ground_truth.csv`; rerun
+`scripts/compare_to_ground_truth.py` to reproduce it.
+
+## Parameter sensitivity: `dark_percentile`
+
+`dark_percentile` (config.json) was originally set to 30 as a carry-over
+default, not a value with its own documented sweep — the "why Felzenszwalb"
+comparison above tuned which *method* to use, not this method's own knobs.
+`scripts/sweep_dark_percentile.py` closes that gap: with `scale`/`sigma`/`min_size`
+held fixed, it re-thresholds the same Felzenszwalb segmentation (segmenting
+each tile is independent of `dark_percentile` — only the "how dark is dark"
+cutoff depends on it, so this is cheap: one segmentation pass per tile,
+re-thresholded for every percentile) and scores each value with the same
+pixel-level protocol as `compare_to_ground_truth.py`, across all 173 tiles.
+
+![IoU/precision/recall vs. dark_percentile, 173 tiles, current default and empirical best marked](results/figures/dark_percentile_sweep.png)
+
+| dark_percentile | IoU | Precision | Recall |
+|---|---|---|---|
+| 5 | 0.172 | 0.696 | 0.186 |
+| 10 | 0.264 | 0.630 | 0.313 |
+| **15 (current default, adopted 2026-09-11)** | **0.292** | 0.574 | 0.373 |
+| 20 | 0.291 | 0.516 | 0.400 |
+| 25 | 0.287 | 0.466 | 0.426 |
+| 30 (previous default) | 0.275 | 0.421 | 0.444 |
+| 35 | 0.263 | 0.378 | 0.464 |
+| 40 | 0.241 | 0.330 | 0.471 |
+| 45 | 0.221 | 0.289 | 0.487 |
+| 50 | 0.173 | 0.210 | 0.495 |
+| 60 | 0.090 | 0.098 | 0.546 |
+| 70 | 0.041 | 0.042 | 0.594 |
+| 80 | 0.025 | 0.025 | 0.805 |
+
+Full numbers: `results/dark_percentile_sweep.csv`.
+
+**Reading**: 30 (the original default) was not the optimum — **15 gives IoU
+0.292 vs. 0.275, a ~6% relative gain**, by trading some recall (0.373 vs.
+0.444) for meaningfully higher precision (0.574 vs. 0.421). The IoU curve
+is fairly flat across 10-30 (0.264-0.292) and falls off sharply past 45 as
+recall keeps climbing but precision collapses (past dark_percentile=50,
+more than half the image gets flagged as candidate slick, and accuracy
+craters). Sanity check at the time: the sweep's own dark_percentile=30
+point (IoU 0.2754) reproduced the then-registered `BASELINE_CLASSICAL`
+value (IoU 0.2759) to within rounding from the connected-component vs.
+vector-polygon size filter used by each script — confirmed the two
+methodologies agree before adopting the change.
+
+**Adopted 2026-09-11**: `config.json` now uses `dark_percentile=15`.
+`results/iou_vs_ground_truth.csv`, `../pipeline_comparison.csv`, and
+`pipeline_hybrid`'s Phase 1 (candidates, RF training, threshold
+calibration, and the ML-vs-hybrid comparison figures) were all regenerated
+against the new candidate set — see `pipeline_hybrid/README.md`'s Phase 1
+section for the updated hybrid numbers. The dataset repo's synced copy of
+`pipeline_classical` has not been re-synced/republished yet
+(`tools/sync_to_dataset_repo.sh` + a new Zenodo version, if desired).
 
 ## What it does
 

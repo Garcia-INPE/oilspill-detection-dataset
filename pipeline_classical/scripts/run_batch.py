@@ -17,7 +17,7 @@ Output layout (under results_dir from config.json):
       <tile_id>_features.csv  — feature table for detected polygons
   detection_summary.csv       — per-tile per-benchmark_id detection count
 
-Usage (from src/pipeline_classical/):
+Usage (from pipeline_classical/):
   python scripts/run_batch.py
 """
 import json

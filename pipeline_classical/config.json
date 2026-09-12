@@ -7,11 +7,11 @@
   "algorithms": {
     "BASELINE_CLASSICAL": {
       "method": "felzenszwalb",
-      "_comment": "Felzenszwalb graph-based segmentation then dark-segment threshold. scale: larger = larger segments. dark_percentile: segments below this mean-intensity percentile are flagged. Selected as the sole classical baseline (2026-07-08) after comparing all 7 originally implemented candidates against ground truth: best IoU (0.276) with the only reasonably balanced precision/recall (0.42/0.44) — see results/iou_vs_ground_truth.csv.",
+      "_comment": "Felzenszwalb graph-based segmentation then dark-segment threshold. scale: larger = larger segments. dark_percentile: segments below this mean-intensity percentile are flagged. Selected as the sole classical baseline (2026-07-08) after comparing all 7 originally implemented candidates against ground truth. dark_percentile changed 30->15 on 2026-09-11 after scripts/sweep_dark_percentile.py showed 15 beats 30 on pixel IoU (0.292 vs 0.275) — see the 'Parameter sensitivity' section in README.md and results/dark_percentile_sweep.csv.",
       "scale": 100,
       "sigma": 0.5,
       "min_size": 50,
-      "dark_percentile": 30
+      "dark_percentile": 15
     }
   }
 }

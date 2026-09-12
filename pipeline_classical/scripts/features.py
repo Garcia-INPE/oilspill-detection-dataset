@@ -2,12 +2,12 @@
 Standalone feature extraction for the classical detection pipeline.
 
 Ported from:
-  src/FunGetFeat_Geom.py  — geometric features
-  src/FunGetFeat_Stat.py  — radiometric/statistical features
-  src/Functions.py        — shared utilities (get_utm_zone, get_epsg_from_latlon,
-                            get_masked_array_from_vector)
+  src/lib/FunGetFeat_Geom.py  — geometric features
+  src/lib/FunGetFeat_Stat.py  — radiometric/statistical features
+  src/lib/Functions.py        — shared utilities (get_utm_zone, get_epsg_from_latlon,
+                                get_masked_array_from_vector)
 
-src/Config.py and src/FunPlot.py are NOT imported here: Config.py reads a
+src/Config.py and src/lib/FunPlot.py are NOT imported here: Config.py reads a
 hardcoded shapefile at import time, making direct import non-portable.
 The feature math is identical to the original; only the import chain is removed.
 """
@@ -24,7 +24,7 @@ from scipy.stats import ks_2samp, mannwhitneyu
 from shapely import geometry
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Utilities (ported from src/Functions.py)
+# Utilities (ported from src/lib/Functions.py)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def get_utm_zone(latitude: float, longitude: float) -> str:
@@ -52,7 +52,7 @@ def get_masked_array_from_vector(raster, vectors, filled=False, crop=True, inver
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Geometric features (ported from src/FunGetFeat_Geom.py)
+# Geometric features (ported from src/lib/FunGetFeat_Geom.py)
 # ─────────────────────────────────────────────────────────────────────────────
 
 _AREA_FACTOR = 1_000_000   # m² → km²
@@ -154,7 +154,7 @@ def get_feat_geom(gdf_poly: gpd.GeoDataFrame, dict_ret: dict) -> dict:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Radiometric/statistical features (ported from src/FunGetFeat_Stat.py)
+# Radiometric/statistical features (ported from src/lib/FunGetFeat_Stat.py)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _power_mean_ratio(dist1: np.ndarray, dist2: np.ndarray, p: float) -> float:

@@ -1,0 +1,2 @@
+benchmark_id,method,iou_slick,precision,recall,pixel_accuracy,tp,fp,fn,tn
+BASELINE_HYBRID,felzenszwalb+rf,0.4587153901474256,0.7692974521332633,0.5318827361563472,0.9931576704545452,61233,18363,53892,10426512

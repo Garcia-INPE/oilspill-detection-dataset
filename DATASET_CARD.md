@@ -11,7 +11,7 @@
 - Image dimensions: 800 × 600 pixels per tile
 - Number of samples: 173 image-mask triplets
 - Classes: 2 — `SEA` (background, pixel value 0), `SLICK` (oil spill or seepage, pixel value 1)
-- Repository scope: dataset + both baselines reported in its technical validation (classical and ML)
+- Repository scope: dataset + all three baselines reported in its technical validation (classical, ML, and hybrid)
 
 ## 2. Repository Tree (Dirs, Files, and Inventory)
 
@@ -22,7 +22,7 @@ oilspill-detection-dataset/
 	DATASET_CARD.md
 		- This dataset card.
 	LICENSE
-		- CC BY 4.0, covers the dataset and both benchmark pipelines below.
+		- CC BY 4.0, covers the dataset and all benchmark pipelines below.
 	CITATION.cff
 		- Machine-readable citation metadata.
 
@@ -76,9 +76,18 @@ oilspill-detection-dataset/
 		- Felzenszwalb baseline: unsupervised segmentation scripts and registered results
 		  (detection_summary.csv, iou_vs_ground_truth.csv).
 
+	pipeline_hybrid/
+		- Hybrid baseline (BASELINE_HYBRID): Felzenszwalb candidate generation (reused
+		  from pipeline_classical) followed by a Random Forest classifier on
+		  hand-crafted per-candidate features, plus registered results
+		  (results/benchmark_hybrid.csv). Built to address pipeline_classical's low
+		  precision.
+
 	pipeline_comparison.csv
-		- Classical vs. ML side by side, same metrics (iou_slick, pixel_accuracy) —
-		  produced by pipeline_classical/scripts/compare_to_ml.py.
+		- All three baselines side by side, same metrics (iou_slick, precision, recall,
+		  pixel_accuracy) — produced by pipeline_classical/scripts/compare_to_ml.py.
+		  Classical is reported at two scopes (full_dataset: 173 tiles; test_split: the
+		  same 22 tiles as the other two baselines); hybrid and ML are test_split only.
 ```
 
 ## 3. Split Manifest Schema
@@ -113,9 +122,9 @@ The 8-bit and 16-bit feature tables share the same 67-column schema, including:
 ## 6. Quality and Validation Notes
 
 - Splits are grouped by source image: all tiles from the same acquisition are kept in the same split.
-- Both baselines report metrics identically (global/micro confusion matrix over all pixels of all
-  tiles, positive class = `mask > 0`), so `iou_slick`/`pixel_accuracy` are directly comparable between
-  `pipeline_comparison.csv` entries.
+- All three baselines report metrics identically (global/micro confusion matrix over all pixels of all
+  tiles, positive class = `mask > 0`), so `iou_slick`/`precision`/`recall`/`pixel_accuracy` are directly
+  comparable between `pipeline_comparison.csv` entries (scope differences noted above still apply).
 
 ## 7. Known Limitations
 

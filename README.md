@@ -6,8 +6,9 @@ Sentinel-1 SAR-derived oil slick segmentation dataset covering the Gulf of Mexic
 (Cantarell region). 173 image-mask triplets (800 × 600 px) acquired January–September 2020.
 Binary segmentation task: `0 = SEA` (background), `1 = SLICK` (oil spill or seepage).
 
-Includes both baselines reported in the dataset's technical validation: a
-classical unsupervised segmentation method and a deep-learning (TinyUNet) model.
+Includes all three baselines reported in the dataset's technical validation: a
+classical unsupervised segmentation method, a deep-learning (TinyUNet) model,
+and a hybrid method (classical candidate generation + supervised classifier).
 
 Licensed under [CC BY 4.0](LICENSE) — one license for the dataset and both
 benchmark pipelines below.
@@ -26,8 +27,18 @@ benchmark pipelines below.
   Felzenszwalb was chosen as the best of 7 classical methods benchmarked
   against ground truth, not an arbitrary pick — see `pipeline_classical/README.md`'s
   "Why Felzenszwalb" section.
-- `pipeline_comparison.csv`: classical vs. ML side by side, same metrics
-  (`iou_slick`, `pixel_accuracy`) — produced by `pipeline_classical/scripts/compare_to_ml.py`.
+- `pipeline_hybrid/`: hybrid baseline (`BASELINE_HYBRID`) — Felzenszwalb
+  candidate generation (reused from `pipeline_classical`) followed by a
+  Random Forest classifier on hand-crafted per-candidate features, plus its
+  registered results (`results/benchmark_hybrid.csv`). Built to address
+  `pipeline_classical`'s low precision — see `pipeline_hybrid/README.md`'s
+  "Phase 1" section for the full methodology and results.
+- `pipeline_comparison.csv`: all three baselines side by side, same metrics
+  (`iou_slick`, `precision`, `recall`, `pixel_accuracy`) — produced by
+  `pipeline_classical/scripts/compare_to_ml.py`. Classical is reported at
+  two scopes (`full_dataset`, 173 tiles, unsupervised; `test_split`, the
+  same 22 tiles as the other two baselines) since it needs no train/test
+  split; hybrid and ML are reported on the 22-tile test split only.
 - `DATASET_CARD.md`: full dataset reference (schema, inventory, limitations).
 - `LICENSE`: CC BY 4.0 license.
 - `CITATION.cff`: machine-readable citation metadata.
@@ -83,11 +94,29 @@ python scripts/compare_to_ground_truth.py
 
 See `pipeline_classical/README.md` for details.
 
+### Reproducing the hybrid baseline (Felzenszwalb + Random Forest)
+
+`dataset_root` in `pipeline_hybrid/config.json` already points at this
+repository's own root (`../`). Requires `pipeline_classical`'s candidates to
+exist first (run its `run_batch.py`, above).
+
+```bash
+cd pipeline_hybrid
+pip install -r requirements.txt
+python scripts/phase1_candidate_classifier.py
+python scripts/register_benchmark.py
+```
+
+See `pipeline_hybrid/README.md` for details, including why this baseline
+exists (classical's low precision) and the XGBoost-vs-Random-Forest
+comparison that kept Random Forest as the registered model.
+
 ## Documentation
 
 - `DATASET_CARD.md`: complete dataset card (schema, inventory, known limitations).
 - `pipeline_ml/00-README.md`, `pipeline_ml/BENCHMARK_PROTOCOL.md`: ML workflow and benchmark protocol.
 - `pipeline_classical/README.md`: classical baseline details and why Felzenszwalb was selected.
+- `pipeline_hybrid/README.md`: hybrid baseline details, rationale, and results.
 
 ## Citation
 
