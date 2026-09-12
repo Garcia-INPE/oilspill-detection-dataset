@@ -1,6 +1,6 @@
 # Oil Spill Segmentation Dataset (800x600)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22214145.svg)](https://doi.org/10.5281/zenodo.22214145)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22214144.svg)](https://doi.org/10.5281/zenodo.22214144)
 
 Sentinel-1 SAR-derived oil slick segmentation dataset covering the Gulf of Mexico
 (Cantarell region). 173 image-mask triplets (800 × 600 px) acquired January–September 2020.
@@ -10,7 +10,7 @@ Includes all three baselines reported in the dataset's technical validation: a
 classical unsupervised segmentation method, a deep-learning (TinyUNet) model,
 and a hybrid method (classical candidate generation + supervised classifier).
 
-Licensed under [CC BY 4.0](LICENSE) — one license for the dataset and both
+Licensed under [CC BY 4.0](LICENSE) — one license for the dataset and all
 benchmark pipelines below.
 
 ## Repository contents
@@ -120,5 +120,5 @@ comparison that kept Random Forest as the registered model.
 
 ## Citation
 
-Archived on Zenodo: [10.5281/zenodo.22214145](https://doi.org/10.5281/zenodo.22214145).
+Archived on Zenodo: [10.5281/zenodo.22214144](https://doi.org/10.5281/zenodo.22214144).
 See `CITATION.cff` for machine-readable metadata.

@@ -141,5 +141,5 @@ This dataset is intended for research and benchmarking in remote sensing and oil
 
 ## 9. Citation
 
-Archived on Zenodo: [10.5281/zenodo.22214145](https://doi.org/10.5281/zenodo.22214145).
+Archived on Zenodo: [10.5281/zenodo.22214144](https://doi.org/10.5281/zenodo.22214144).
 See `CITATION.cff` for machine-readable metadata.

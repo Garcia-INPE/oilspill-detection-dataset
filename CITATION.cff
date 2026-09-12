@@ -3,7 +3,7 @@ message: >-
   If you use this dataset or the accompanying benchmark code, please cite it
   using the metadata below.
 title: Oil Spill Segmentation Dataset (800x600)
-doi: 10.5281/zenodo.22214145
+doi: 10.5281/zenodo.22214144
 type: dataset
 authors:
   - family-names: Garcia
@@ -15,8 +15,8 @@ authors:
   # TODO: add remaining co-authors before publication
 repository-code: "https://github.com/Garcia-INPE/oilspill-detection-dataset"
 license: CC-BY-4.0
-version: 0.1.0
-date-released: "2026-08-31"
+version: 0.2.0
+date-released: "2026-09-12"
 keywords:
   - oil spill detection
   - synthetic aperture radar
